@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Auto Shutdown">
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="#1f2a37"/>
+  <path d="M32 14v18" stroke="#7ee0b8" stroke-width="5" stroke-linecap="round"/>
+  <path d="M21 20a16 16 0 1 0 22 0" fill="none" stroke="#7ee0b8" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="48" cy="16" r="6" fill="#f0736a"/>
+</svg>

@@ -1,0 +1,18 @@
+- insert:
+    - id: auto-shutdown
+      name: dsh-auto-shutdown
+      config:
+        # 全部挂机后等待多久才真正关机（毫秒）。默认 120000 = 2 分钟。
+        countdownMs: 120000
+        # 真正调 shutdown 时，系统层面的倒计时秒数（期间可在 UI 点「取消关机」执行 shutdown /a）。
+        shutdownGraceSeconds: 20
+        # true：除了已开启开关的会话，还要等所有其它活动会话也空闲；
+        # false：只看已开启开关的会话。
+        requireGlobalQuiet: true
+        # true：shutdown /f，强制结束阻止关机的程序（否则可能卡在确认界面，自动化就白做）。
+        force: true
+        # true：只演练不真关机（日志里记录将要执行的命令）。首次验证请先设 true。
+        dryRun: false
+        # 不让「已预约、尚未触发的定时提醒」阻塞关机倒计时：否则回合结束后仍要等到提醒触发
+        # 才开始倒计时（实测空窗可达数十秒）。代价：关机时尚未触发的提醒会随关机丢失。
+        ignoreKinds: ["schedule"]

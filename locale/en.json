@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Auto Shutdown Switch",
+    "description": "Adds a per-session switch: when every armed session has finished all its work, the machine powers off by itself."
+  }
+}

@@ -1,0 +1,14 @@
+# 提交到 awesome-dsh-plugin 的条目（PR 用，不是本仓库文件）
+#
+# 目标文件：awesome-dsh-plugin/awesome-dsh-plugin 仓库里的
+#   data/plugins/ypx01__dsh-auto-shutdown.yml
+# 目录/文件名规则：<owner>__<repo>.yml（owner 与 repo 用双下划线连接）
+url: https://github.com/ypx01/dsh-auto-shutdown
+name: ypx01/dsh-auto-shutdown
+category: workflow
+description:
+  en: 'Per-session auto-shutdown switch in the session header: once every session that has it switched on has no turn, job, subagent or tool still running, a two-minute countdown starts and the machine powers off; clicking the countdown cancels it, and sessions without the switch never trigger anything.'
+  zh: '会话标题栏上的「任务完成后自动关机」开关：所有开启它的会话都不再有进行中的回合、任务、子代理时，开始两分钟倒计时，结束后关机；点倒计时即取消，没开这个开关的会话不会触发任何动作。'
+# 市场卡片图标：必须是 GitHub 托管的位图（png/jpg/webp），SVG 会被拒。
+# 仓库里已放好 assets/icon-180.png（180×180、透明圆角），下面这行在仓库推送后即生效。
+icon: https://raw.githubusercontent.com/ypx01/dsh-auto-shutdown/main/assets/icon-180.png

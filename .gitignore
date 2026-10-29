@@ -1,0 +1,45 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.npm/
+.pnpm-store/
+
+# Build output / caches (this plugin ships plain JS, but keep future builds out of git)
+dist/
+build/
+out/
+.cache/
+coverage/
+*.tsbuildinfo
+
+# Local logs and runtime litter
+*.log
+logs/
+.tmp/
+tmp/
+*.tmp
+*.bak
+*.orig
+*.rej
+
+# Local overrides and secrets
+.env
+.env.*
+!.env.example
+*.local
+*.pem
+*.key
+
+# Editors / OS
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Windows sandbox / plugin-manager leftovers
+*.stackdump

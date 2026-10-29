@@ -1,0 +1,65 @@
+{
+  "name": "dsh-auto-shutdown",
+  "version": "0.1.0",
+  "description": "Per-session auto-shutdown switch for DeepSeek Harness: arm a session, and the machine powers off once every armed session has finished all its work.",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "README.md",
+    "README.en.md",
+    "LICENSE"
+  ],
+  "license": "MIT",
+  "author": "ypx01",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek",
+    "harness",
+    "shutdown",
+    "power-management",
+    "session"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ypx01/dsh-auto-shutdown.git"
+  },
+  "homepage": "https://github.com/ypx01/dsh-auto-shutdown#readme",
+  "bugs": {
+    "url": "https://github.com/ypx01/dsh-auto-shutdown/issues"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dsh": {
+    "bundle": { "patch": "./cordis.patch.yml" },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": ["@deepseek-ai/dsh-client-ui-conversation"]
+    },
+    "compatibility": { "dsh": ">=0.2.0-rc.0" }
+  },
+  "dshhub": {
+    "displayName": "自动关机开关 (Auto Shutdown)",
+    "summary": "为每个会话增加一个「任务完成后自动关机」开关；多个会话同时开启时，全部完成后才关机。",
+    "categories": ["system", "automation"],
+    "surfaces": ["conversation.session.header.utilities", "webServer"],
+    "capabilities": ["session-activity", "power-management"],
+    "permissions": ["spawn-process"]
+  }
+}
