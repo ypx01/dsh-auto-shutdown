@@ -29,14 +29,15 @@
 收录硬性要求里有 **「仓库创建满 1 天」**（CI 自动查，PR 前几分钟建的仓必被打回）。
 所以这一步要最先做，做完等一天再提 PR。
 
+本目录**已经**是 git 仓库（分支 `main`，2 个提交，`origin` 已指向 `https://github.com/ypx01/dsh-auto-shutdown.git`，
+提交邮箱已设为 GitHub 的 noreply 地址 `349763228+ypx01@users.noreply.github.com`，不暴露真实邮箱），
+所以**只需**在网页建好空仓库再 push 一次：
+
+1. 打开 <https://github.com/new> → Repository name 填 `dsh-auto-shutdown` → **Public** →
+   **不要**勾 Add a README / .gitignore / license（仓库必须是空的）→ Create repository
+2. 在 `D:\deepseek-workspace\plugins\dsh-auto-shutdown` 里执行（首次会弹浏览器登录，登录一次后凭据会记住）：
+
 ```powershell
-cd D:\deepseek-workspace\plugins\dsh-auto-shutdown
-git init
-git add .
-git commit -m "feat: per-session auto-shutdown switch (0.1.0)"
-git branch -M main
-# 先在网页上建好空仓库 https://github.com/new  →  ypx01/dsh-auto-shutdown（public，不要勾 README）
-git remote add origin https://github.com/ypx01/dsh-auto-shutdown.git
 git push -u origin main
 ```
 
@@ -56,17 +57,29 @@ npm.cmd publish        # publishConfig 已设 access=public，无需再加 --acc
 
 ## 第 3 步：提 PR（一个文件就是全部投稿）
 
+**不用装任何工具的做法（推荐）**：GitHub 网页上直接加文件。
+
+1. 打开 <https://github.com/awesome-dsh-plugin/awesome-dsh-plugin> → 右上 **Fork** → Create fork
+2. 在自己 fork 的仓库页 → **Add file → Create new file**
+3. 文件名填 `data/plugins/ypx01__dsh-auto-shutdown.yml`（输入 `/` 会自动建目录）
+4. 把本仓库 `publish/ypx01__dsh-auto-shutdown.yml` 的内容整段粘进编辑框
+5. **Commit changes** → 选 *Create a new branch for this commit and start a pull request*（分支名 `add-dsh-auto-shutdown`）→ **Propose changes**
+6. 标题填 `Add ypx01/dsh-auto-shutdown`，正文一句话（例如 "Per-session auto-shutdown switch; tested on Windows 11 with dsh 0.2.x."）→ **Create pull request**
+
+装了 `gh` 的话等价于：
+
 ```powershell
-# fork + clone 收录仓库
+winget install --id GitHub.cli -e     # 只需一次
+gh auth login
 gh repo fork awesome-dsh-plugin/awesome-dsh-plugin --clone
 cd awesome-dsh-plugin
 git checkout -b add-dsh-auto-shutdown
 New-Item -ItemType Directory -Force data\plugins | Out-Null
-Copy-Item D:\deepseek-workspace\plugins\dsh-auto-shutdown\publish\awesome-entry.yml data\plugins\ypx01__dsh-auto-shutdown.yml
+Copy-Item D:\deepseek-workspace\plugins\dsh-auto-shutdown\publish\ypx01__dsh-auto-shutdown.yml data\plugins\ypx01__dsh-auto-shutdown.yml
 git add data/plugins/ypx01__dsh-auto-shutdown.yml
 git commit -m "add ypx01/dsh-auto-shutdown"
 git push -u origin add-dsh-auto-shutdown
-gh pr create --title "Add ypx01/dsh-auto-shutdown" --body "Per-session auto-shutdown switch. Installs with dsh plugin add; dsh.bundle manifest present; tested on Windows 11 with dsh 0.2.x."
+gh pr create --title "Add ypx01/dsh-auto-shutdown" --body "Per-session auto-shutdown switch. Tested on Windows 11 with dsh 0.2.x."
 ```
 
 规则要点（都来自 `contributing.md`，照做就不会被打回）：
